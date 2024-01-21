@@ -2,13 +2,36 @@ function hasTargetSum(array, target) {
   // Write your algorithm here
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
 
-/* 
-  Add your pseudocode here
-*/
+
+
+/**
+ * Check if there are two numbers in the array that sum up to the target
+ * @param {number[]} nums - The array of numbers
+ * @param {number} target - The target sum
+ * @returns {boolean} - True if there are two numbers that sum up to the target, false otherwise
+ */
+function hasTargetSum(nums, target) {
+  // Use a Set to store the complements of the numbers seen so far
+  const complements = new Set();
+
+  for (const num of nums) {
+    // Check if the current number's complement is in the Set
+    if (complements.has(num)) {
+      return true; // Found a pair that sums up to the target
+    }
+
+    // Add the complement of the current number to the Set
+    complements.add(target - num);
+  }
+
+  // No pair found
+  return false;
+}
+
+// Export the hasTargetSum function for testing
+module.exports = hasTargetSum;
+
 
 /*
   Add written explanation of your solution here
